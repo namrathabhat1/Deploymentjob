@@ -1,0 +1,23 @@
+<h2>{{ isEdit ? 'Update Deployment Job' : 'Create Deployment Job' }}</h2>
+
+<form (ngSubmit)="createOrUpdateJob()">
+  <label>Name:</label>
+  <input [(ngModel)]="job.name" name="name" required />
+
+  <label>Environment:</label>
+  <select [(ngModel)]="job.environment" name="environment">
+    <option value="DEV">DEV</option>
+    <option value="STAGING">STAGING</option>
+    <option value="PROD">PROD</option>
+  </select>
+
+  <label>Status:</label>
+  <select [(ngModel)]="job.status" name="status">
+    <option value="PENDING">PENDING</option>
+    <option value="RUNNING">RUNNING</option>
+    <option value="SUCCESS">SUCCESS</option>
+    <option value="FAILED">FAILED</option>
+  </select>
+
+  <button type="submit">{{ isEdit ? 'Update' : 'Create' }}</button>
+</form>
