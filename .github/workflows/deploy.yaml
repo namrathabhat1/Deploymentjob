@@ -24,17 +24,17 @@ jobs:
 
       - name: Install frontend dependencies
         run: |
-          cd frontend
+          cd Deployment_App_F
           npm ci
 
       - name: Build Angular app
         run: |
-          cd frontend
+          cd Deployment_App_F
           npm run build --prod
 
       - name: Deploy frontend to S3
         run: |
-          aws s3 sync frontend/dist/ s3://my-angular-frontend-12345 --delete
+          aws s3 sync Deployment_App_F/dist/ s3://my-angular-frontend-12345 --delete
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
@@ -51,12 +51,12 @@ jobs:
 
       - name: Build backend JAR
         run: |
-          cd backend
+          cd Deployment-jobs-api
           ./mvnw clean package -DskipTests
 
       - name: Build Docker image
         run: |
-          cd backend
+          cd Deployment-jobs-api
           docker build -t ${{ secrets.DOCKER_USERNAME }}/my-backend:latest .
 
       - name: Log in to Docker Hub
