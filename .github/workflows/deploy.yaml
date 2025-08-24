@@ -52,7 +52,7 @@ jobs:
       - name: Build backend JAR
         run: |
           cd Deployment-jobs-api
-          ./mvnw clean package -DskipTests
+          mvn clean package -DskipTests
 
       - name: Build Docker image
         run: |
