@@ -10,13 +10,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # Checkout code
       - name: Checkout repository
         uses: actions/checkout@v3
-
-      # ------------------------
-      # Frontend (Angular)
-      # ------------------------
+      #Frontend
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
@@ -40,9 +36,7 @@ jobs:
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           AWS_REGION: ${{ secrets.AWS_REGION }}
 
-      # ------------------------
-      # Backend (Java + Docker)
-      # ------------------------
+      #Backend 
       - name: Set up JDK
         uses: actions/setup-java@v3
         with:
@@ -68,9 +62,8 @@ jobs:
       - name: Push Docker image
         run: docker push ${{ secrets.DOCKERHUB_USERNAME }}/my-backend:latest
 
-      # ------------------------
-      # Deploy Backend to EC2
-      # ------------------------
+
+      #Deploy Backend to EC2
       - name: Save EC2 key
         run: |
           echo "${{ secrets.EC2_KEY }}" > ec2-key.pem
