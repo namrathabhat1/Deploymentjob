@@ -1,5 +1,5 @@
-# Deploymentjob
-Deployment Dashboard
+# Deployment Job Dashboard
+
 Scenario
 Your company wants to build a Deployment Dashboard that allows users to:
 View a list of deployment jobs.
