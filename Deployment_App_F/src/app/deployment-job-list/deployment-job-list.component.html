@@ -1,20 +1,30 @@
-<h2>Deployment Jobs</h2>
 <a routerLink="/create">➕ Create New Job</a>
-<table border="1">
-  <tr>
-    <th>ID</th>
-    <th>Name</th>
-    <th>Environment</th>
-    <th>Status</th>
-    <th>Timestamp</th>
-    <th>Actions</th>
-  </tr>
-  <tr *ngFor="let job of jobs">
-    <td>{{ job.id }}</td>
-    <td>{{ job.name }}</td>
-    <td>{{ job.environment }}</td>
-    <td>{{ job.status }}</td>
-    <td>{{ job.timestamp }}</td>
-    <td><button class="updateBtn" (click)="editJob(job.id!)">Update</button> <button class="deleteBtn" (click)="deleteJob(job.id!)">Delete</button></td>
-  </tr>
+<table border="1" *ngIf="jobs.length > 0; else noJobs">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Environment</th>
+      <th>Status</th>
+      <th>Timestamp</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let job of jobs">
+      <td>{{ job.id }}</td>
+      <td>{{ job.name }}</td>
+      <td>{{ job.environment }}</td>
+      <td>{{ job.status }}</td>
+      <td>{{ job.timestamp | date : "short" }}</td>
+      <td>
+        <!-- <button class="updateBtn" (click)="editJob(job.id!)">Update</button> -->
+        <button class="deleteBtn" (click)="deleteJob(job.id!)">Delete</button>
+      </td>
+    </tr>
+  </tbody>
 </table>
+
+<ng-template #noJobs>
+  <p>No jobs found.</p>
+</ng-template>
