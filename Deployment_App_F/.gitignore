@@ -1,0 +1,25 @@
+# Node modules
+node_modules/
+
+# Environment files (don’t commit secrets)
+src/environments/environment*.ts
+
+# Build output
+/dist
+/out-tsc
+
+# Logs
+npm-debug.log
+yarn-debug.log
+yarn-error.log
+
+# IDE/Editor settings
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+
+# Mac/Linux system files
+.DS_Store
